@@ -2,13 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UIElements;
 
 public class interaction : MonoBehaviour
 {
-    [HideInInspector] public bool canInteract = false;
+    public bool canInteract = false;
 
 
     void Update()
@@ -19,7 +20,7 @@ public class interaction : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter(Collision other)
+    void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.layer == 6)
         {
@@ -27,7 +28,7 @@ public class interaction : MonoBehaviour
         }
     }
 
-    void OnCollisionExit(Collision other)
+    void OnTriggerExit(Collider other)
     {
         if (other.gameObject.layer == 6)
         {
