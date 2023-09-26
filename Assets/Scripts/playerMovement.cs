@@ -4,19 +4,22 @@ using UnityEngine;
 
 public class playerMovement : MonoBehaviour
 {
-    public CharacterController controller;
+    public Rigidbody controller;
     public float movementSpeed = 5f;
+
+    Vector3 direction;
 
     void Update()
     {
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
 
-        Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
+        direction = new Vector3(horizontal, 0f, vertical).normalized;
 
-        if (direction.magnitude >= 0.1f)
-        {
-            controller.Move(direction * movementSpeed * Time.deltaTime);
-        }
+    }
+
+    void FixedUpdate()
+    {
+        controller.velocity = direction * movementSpeed;
     }
 }
