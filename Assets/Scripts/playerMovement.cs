@@ -22,22 +22,22 @@ public class playerMovement : MonoBehaviour
         Vector3 inputedDirection = flashlight.position;
         Quaternion inputedRotation = flashlight.transform.rotation;
 
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKey(KeyCode.A))
         {
             inputedDirection = Vector3.Slerp(flashlight.position, flashlightPositions[2].transform.position, movementSpeed);
             inputedRotation = Quaternion.Slerp(flashlight.rotation, flashlightPositions[2].transform.rotation, movementSpeed);
         }
-        if (Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKey(KeyCode.D))
         {
             inputedDirection = Vector3.Slerp(flashlight.position, flashlightPositions[3].transform.position, movementSpeed);
             inputedRotation = Quaternion.Slerp(flashlight.rotation, flashlightPositions[3].transform.rotation, movementSpeed);
         }
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKey(KeyCode.W))
         {
             inputedDirection = Vector3.Slerp(flashlight.position, flashlightPositions[1].transform.position, movementSpeed);
             inputedRotation = Quaternion.Slerp(flashlight.rotation, flashlightPositions[1].transform.rotation, movementSpeed);
         }
-        if (Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKey(KeyCode.S))
         {
             inputedDirection = Vector3.Slerp(flashlight.position, flashlightPositions[0].transform.position, movementSpeed);
             inputedRotation = Quaternion.Slerp(flashlight.rotation, flashlightPositions[0].transform.rotation, movementSpeed);
