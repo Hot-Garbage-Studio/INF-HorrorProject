@@ -8,11 +8,24 @@ public class interactible : MonoBehaviour
     //1: Scene Change
     //2: Pick-Up
     //3: Door
+    //4: Hide
     public int behaviour;
     public int nextSceneIndex;
     public void changeScene()
     {
         SceneManager.LoadScene(nextSceneIndex);
+
+    }
+    public void collectPickUp()
+    {
+
+    }
+    public void openDoor()
+    {
+
+    }
+    public void hide()
+    {
 
     }
 
@@ -21,11 +34,11 @@ public class interactible : MonoBehaviour
         if (behaviour == 1)
         {
             changeScene();
+
         }
-    }
+        else if (behaviour == 2)
+        {
 
-    public void Start()
-    {
-
+        }
     }
 }
