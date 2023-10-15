@@ -10,13 +10,14 @@ using UnityEngine.UIElements;
 public class interaction : MonoBehaviour
 {
     public bool canInteract = false;
-
+    static interactible nullInteraction;
+    private interactible interactionObj = nullInteraction;
 
     void Update()
     {
         if (canInteract && Input.GetButtonDown("Submit"))
         {
-            Debug.Log("Interacted");
+            interactionObj.getBehaviour();
         }
     }
 
@@ -25,6 +26,7 @@ public class interaction : MonoBehaviour
         if (other.gameObject.layer == 6)
         {
             canInteract = true;
+            interactionObj = other.GetComponent<interactible>();
         }
     }
 
@@ -33,6 +35,7 @@ public class interaction : MonoBehaviour
         if (other.gameObject.layer == 6)
         {
             canInteract = false;
+            interactionObj = nullInteraction;
         }
     }
 }
