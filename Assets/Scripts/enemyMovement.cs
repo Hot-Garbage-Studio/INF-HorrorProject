@@ -27,10 +27,13 @@ public class enemyMovement : MonoBehaviour
     }
     void Update()
     {
+
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
 
         if (!playerInSightRange) Patroling();
-        if (playerInSightRange) ChasePlayer();
+        else ChasePlayer();
+
+        agent.updateRotation=false;
     }
 
 
