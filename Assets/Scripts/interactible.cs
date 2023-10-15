@@ -10,7 +10,14 @@ public class interactible : MonoBehaviour
     //3: Door
     //4: Hide
     public int behaviour;
-    public int nextSceneIndex;
+    [SerializeField] private int nextSceneIndex;
+    //Either which key to pick up or what key the player needs to open a door;
+    [SerializeField] private int whichKeyIndex;
+    //used to get the gameobject of player
+    static private GameObject player;
+    //used to get the actual "player" component
+    static private player playerObj;
+
     public void changeScene()
     {
         SceneManager.LoadScene(nextSceneIndex);
@@ -18,7 +25,7 @@ public class interactible : MonoBehaviour
     }
     public void collectPickUp()
     {
-
+        playerObj.pickUpKey(whichKeyIndex);
     }
     public void openDoor()
     {
@@ -38,7 +45,13 @@ public class interactible : MonoBehaviour
         }
         else if (behaviour == 2)
         {
-
+            collectPickUp();
         }
+    }
+
+    void Awake()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+        playerObj = player.GetComponent<player>();
     }
 }
