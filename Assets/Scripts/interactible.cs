@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -13,10 +11,13 @@ public class interactible : MonoBehaviour
     [SerializeField] private int nextSceneIndex;
     //Either which key to pick up or what key the player needs to open a door;
     [SerializeField] private int whichKeyIndex;
+    [SerializeField] private bool isDoorLocked;
+    private bool isHidden;
     //used to get the gameobject of player
-    static private GameObject player;
+    public GameObject playerHidden;
+    [SerializeField] static private GameObject playerObj;
     //used to get the actual "player" component
-    static private player playerObj;
+    static private player player;
 
     public void changeScene()
     {
@@ -25,15 +26,30 @@ public class interactible : MonoBehaviour
     }
     public void collectPickUp()
     {
-        playerObj.pickUpKey(whichKeyIndex);
+        player.pickUpKey(whichKeyIndex);
+        Destroy(this.gameObject);
     }
     public void openDoor()
     {
+        if (!isDoorLocked)
+        {
 
+        }
     }
     public void hide()
     {
-
+        if (!isHidden)
+        {
+            playerHidden.transform.position = playerObj.transform.position;
+            playerObj.SetActive(false);
+            isHidden = true;
+        }
+        else
+        {
+            playerObj.SetActive(true);
+            playerHidden.transform.position = new Vector3(0f, -1f, 0f);
+            isHidden = false;
+        }
     }
 
     public void getBehaviour()
@@ -47,11 +63,25 @@ public class interactible : MonoBehaviour
         {
             collectPickUp();
         }
+        else if (behaviour == 3)
+        {
+
+        }
+        else if (behaviour == 4)
+        {
+            hide();
+        }
+        else
+        {
+            Debug.Log("Invalid Behaviour Set");
+        }
+
     }
 
-    void Awake()
+    void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
-        playerObj = player.GetComponent<player>();
+        playerObj = GameObject.FindGameObjectWithTag("Player");
+        playerHidden = GameObject.FindGameObjectWithTag("HiddenPlayer");
+        player = playerObj.GetComponent<player>();
     }
 }

@@ -1,11 +1,6 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor;
+
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.UIElements;
+
 
 public class interaction : MonoBehaviour
 {
