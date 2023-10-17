@@ -15,7 +15,7 @@ public class enemyMovement : MonoBehaviour
     bool walkPointSet;
     public float walkPointRange;
 
-    public float sightRange, attackRange;
+    public float sightRange;
     public bool playerInSightRange, playerInAttackRange;
 
     

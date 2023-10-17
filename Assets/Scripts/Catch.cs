@@ -10,7 +10,7 @@ public class Catch : MonoBehaviour
 
     void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.layer == 0)
+        if (other.gameObject.layer == 8)
         {
             aniDeath.SetActive(true);
             StartCoroutine(Timer());
