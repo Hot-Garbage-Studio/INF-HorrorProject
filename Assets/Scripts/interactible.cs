@@ -14,7 +14,7 @@ public class interactible : MonoBehaviour
     [SerializeField] private bool isDoorLocked;
     private bool isHidden;
     //used to get the gameobject of player
-    public GameObject playerHidden;
+    private GameObject playerHidden;
     [SerializeField] static private GameObject playerObj;
     //used to get the actual "player" component
     static private player player;
@@ -32,6 +32,10 @@ public class interactible : MonoBehaviour
     public void openDoor()
     {
         if (!isDoorLocked)
+        {
+
+        }
+        else if (player.keys[whichKeyIndex])
         {
 
         }
