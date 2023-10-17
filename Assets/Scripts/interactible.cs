@@ -27,18 +27,15 @@ public class interactible : MonoBehaviour
     public void collectPickUp()
     {
         player.pickUpKey(whichKeyIndex);
-        Destroy(this.gameObject);
+        Destroy(gameObject);
     }
     public void openDoor()
     {
-        if (!isDoorLocked)
+        if (!isDoorLocked || player.keys[whichKeyIndex])
         {
-
+            Destroy(gameObject);
         }
-        else if (player.keys[whichKeyIndex])
-        {
 
-        }
     }
     public void hide()
     {
@@ -69,7 +66,7 @@ public class interactible : MonoBehaviour
         }
         else if (behaviour == 3)
         {
-
+            openDoor();
         }
         else if (behaviour == 4)
         {
